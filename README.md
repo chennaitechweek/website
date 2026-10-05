@@ -27,3 +27,7 @@ flowchart LR
 ```
 
 The build includes only the current website assets. Brand assets are available at `/media-kit/`. Space Grotesk is distributed with its SIL Open Font License.
+
+## Deployment
+
+GitHub retains the source; Cloudflare Workers serves the website. Run `npm run validate` and `npm run build`, then `npx wrangler deploy` using the authorised Cloudflare account. Deployment is manual. GitHub Pages is not used.
