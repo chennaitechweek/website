@@ -26,7 +26,7 @@ flowchart LR
   Site --> Calendar[Luma calendar]
 ```
 
-The homepage uses a typography-first hero, followed by an illustrated city section, programme directions and a host invitation. The original imagegen illustration is retained at `assets/chennai-ai/city-art.webp`; responsive WebP variants support smaller screens. It is conceptual artwork, not event photography.
+The homepage pairs a typographic introduction with a Chennai illustration, followed by the citywide format, programme directions and a host invitation. The original imagegen illustration is retained at `assets/chennai-ai/city-art.webp`; responsive WebP variants support smaller screens. It is conceptual artwork, not event photography.
 
 The build includes only the current website assets. Brand assets are available at `/media-kit/`. Space Grotesk is self-hosted as WOFF2 and distributed with its SIL Open Font License. System light/dark preferences, an optional theme switch, keyboard navigation and reduced-motion preferences are supported. Essential content and links work without JavaScript.
 
