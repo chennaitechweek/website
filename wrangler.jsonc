@@ -1,0 +1,21 @@
+{
+  "name": "chennai-ai-week-site",
+  "compatibility_date": "2026-10-05",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    {
+      "pattern": "chennaiweek.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.chennaiweek.com",
+      "custom_domain": true
+    }
+  ],
+  "main": "worker.js"
+}
