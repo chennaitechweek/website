@@ -1,27 +1,33 @@
-# Chennai Tech Week
+# ChennAI Week
 
-![Chennai Tech Week line illustration with builders gathering across the city.](assets/site/chennai-line-graphic.png)
+![Graphic illustration of Chennai architecture meeting AI-inspired forms.](assets/chennai-ai/city-art.webp)
 
-[Chennai Tech Week](https://chennaitechweek.com) is a citywide builder week taking shape for founders, engineers, designers, investors, operators, and community hosts across Chennai.
+[Chennai AI Week](https://chennaiweek.com/) brings builders, researchers and communities together to explore artificial intelligence across the city. The wordmark **ChennAI Week** shares the AI in Chennai with artificial intelligence.
 
-The public website is intentionally simple while the program is being prepared. Follow the Luma calendar to get notified when updates open.
+[Follow the Luma calendar](https://luma.com/chennaiweek). Dates and programme details will be announced when ready.
 
-[Get notified on Luma](https://lu.ma/chennaitechweek)
+## Development
 
-## Media Kit
+Native HTML, CSS and JavaScript. No framework runtime is required.
 
-Official logos, usage notes, colors, and typography are available at
-[chennaitechweek.com/media-kit](https://chennaitechweek.com/media-kit/).
+```sh
+npm run validate
+npm run build
+npm run serve
+```
 
-## What To Expect
+## Website structure
 
-- Community-hosted rooms across Chennai.
-- Founder conversations, technical sessions, demos, and meetups.
-- A public calendar that makes the week easy to discover and follow.
+```mermaid
+flowchart LR
+  Source[HTML and brand assets] --> Build[Static build]
+  Build --> Edge[Cloudflare Workers Assets]
+  Edge --> Site[chennaiweek.com]
+  Site --> Calendar[Luma calendar]
+```
 
-## Links
+The build includes only the current website assets. Brand assets are available at `/media-kit/`. Space Grotesk is distributed with its SIL Open Font License.
 
-- Website: [chennaitechweek.com](https://chennaitechweek.com)
-- Media kit: [chennaitechweek.com/media-kit](https://chennaitechweek.com/media-kit/)
-- Calendar: [lu.ma/chennaitechweek](https://lu.ma/chennaitechweek)
-- Contact: [Yashraj Nayak](https://in.linkedin.com/in/yashrajnayak)
+## Deployment
+
+GitHub retains the source; Cloudflare Workers serves the website. Run `npm run validate` and `npm run build`, then `npx wrangler deploy` using the authorised Cloudflare account. Deployment is manual. GitHub Pages is not used.

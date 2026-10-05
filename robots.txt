@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://chennaitechweek.com/sitemap.xml
+Sitemap: https://chennaiweek.com/sitemap.xml
