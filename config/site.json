@@ -1,0 +1,67 @@
+{
+  "name": "Chennai AI Week",
+  "displayName": "ChennAI Week",
+  "city": "Chennai",
+  "kind": "AI Week",
+  "monogram": "CAI",
+  "slug": "chennai-ai-week",
+  "layout": "collage",
+  "publish": true,
+  "domain": "chennaiweek.com",
+  "calendar": "https://luma.com/chennaiweek",
+  "colors": {
+    "ink": "#123D39",
+    "accent": "#25745C",
+    "paper": "#F2F5E9",
+    "highlight": "#D7EF66"
+  },
+  "heading": "Chennai.",
+  "emphasis": "Let’s build.",
+  "description": "Chennai AI Week is a place to build, test and discuss useful AI. By Curious Commons.",
+  "intro": "For people making AI useful, and those curious enough to try.",
+  "aboutTitle": "From an interesting idea to something you can try.",
+  "about": "Chennai’s engineers, researchers, founders and creators bring different questions to AI. We want to make room for working through them together: building, testing, sharing what works and being honest about what doesn’t.",
+  "formatsTitle": "Show what AI can do.",
+  "formats": [
+    {
+      "title": "Build something useful",
+      "text": "Hands-on sessions around real problems. Bring a project, test an approach or work through a question with someone beside you."
+    },
+    {
+      "title": "Look under the surface",
+      "text": "Conversations about models, language, design and the limits of a tool. Useful questions belong here as much as working demos."
+    },
+    {
+      "title": "Find the next collaborator",
+      "text": "Meet people working on related problems, exchange notes and discover what others in the city are trying."
+    }
+  ],
+  "invitation": "What would you like to try?",
+  "invitationText": "Bring a working session, a demo, a research question or a space to gather. Help shape what the first edition becomes.",
+  "art": {
+    "src": "/assets/chennai-ai/chennai-city-1024.webp",
+    "alt": "Graphic illustration of Chennai architecture, the coast and technological forms.",
+    "width": 1536,
+    "height": 1024
+  },
+  "id": "chennai",
+  "faq": [
+    {
+      "question": "When is the first edition?",
+      "answer": "Dates and venues have not been announced. Follow the calendar for updates as the programme takes shape."
+    },
+    {
+      "question": "Can I host a session?",
+      "answer": "Yes. Write to hello@curiouscommons.com with your idea, who it is for, and what you would need to run it. We will discuss the fit before anything is announced."
+    },
+    {
+      "question": "How will registration work?",
+      "answer": "Confirmed events will have their own listings and entry requirements. Following the calendar is an update subscription, not an event ticket."
+    }
+  ],
+  "photo": {
+    "src": "/assets/community/buildathon-collaboration.webp",
+    "alt": "People working together at the Bengaluru Tech Week 2026 Buildathon.",
+    "caption": "People working together at the Buildathon."
+  }
+}

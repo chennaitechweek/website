@@ -1,0 +1,12 @@
+import {readFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {verifyCore} from './verify-core.mjs';
+const s=JSON.parse(await readFile('config/site.json','utf8'));
+if(!s.publish) throw Error('Publication is disabled. Domain acquisition and a new explicit approval are required.');
+await verifyCore({release:true});
+const branch=execFileSync('git',['branch','--show-current'],{encoding:'utf8'}).trim();
+if(branch!=='main') throw Error('Deploy only the reviewed production merge on main.');
+if(execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim()) throw Error('Release checkout must be clean.');
+execFileSync('npm',['run','validate'],{stdio:'inherit'});
+execFileSync('npm',['run','build'],{stdio:'inherit'});
+execFileSync('npx',['-y','wrangler@4.151.3','deploy'],{stdio:'inherit'});
