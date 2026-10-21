@@ -1,35 +1,44 @@
-# ChennAI Week
+# Chennai AI Week
 
-![Graphic illustration of Chennai architecture meeting AI-inspired forms.](assets/chennai-ai/city-art.webp)
+Chennai AI Week is a place to build, test and discuss useful AI. By Curious Commons.
 
-[Chennai AI Week](https://chennaiweek.com/) brings builders, researchers and communities together to explore artificial intelligence across the city. The wordmark **ChennAI Week** shares the AI in Chennai with artificial intelligence.
+Production: https://chennaiweek.com/
 
-[Follow the Luma calendar](https://luma.com/chennaiweek). Dates and programme details will be announced when ready.
-
-## Development
-
-Native HTML, CSS and JavaScript. No framework runtime is required.
-
-```sh
-npm run validate
-npm run build
-npm run serve
-```
-
-## Website structure
+## Shared Core, distinct city
 
 ```mermaid
 flowchart LR
-  Source[HTML and brand assets] --> Build[Static build]
-  Build --> Edge[Cloudflare Workers Assets]
-  Edge --> Site[chennaiweek.com]
-  Site --> Calendar[Luma calendar]
+  Core[Central Tech Week Core] -->|reviewed commit + SHA-256 pin| Vendor[Immutable city module]
+  Config[City content and publication policy] --> Build[Static build]
+  Brand[City artwork and fonts] --> Build
+  Vendor --> Build
+  Build --> Site[Website and direct media-kit page]
+  Build --> Kit[Verified media-kit ZIP]
+  Site --> Cloudflare[Cloudflare Worker + static assets]
 ```
 
-The homepage pairs a typographic introduction with a Chennai illustration, followed by the citywide format, programme directions and a host invitation. The original imagegen illustration is retained at `assets/chennai-ai/city-art.webp`; responsive WebP variants support smaller screens. It is conceptual artwork, not event photography.
+The shared renderer, layout rules, media-kit packaging and canonical routing live in **Tech Week Core**. `core.lock.json` records the reviewed commit and file checksums. `vendor/tech-week-core` is an immutable, public-safe distribution of that module, not an independently maintained fork. Build verification rejects local changes to the snapshot. Existing Bengaluru consumers remain on their current package version.
 
-The build includes only the current website assets. Brand assets are available at `/media-kit/`. Space Grotesk is self-hosted as WOFF2 and distributed with its SIL Open Font License. System light/dark preferences, an optional theme switch, keyboard navigation and reduced-motion preferences are supported. Essential content and links work without JavaScript.
+Update reusable behaviour in Core, run its tests, then export the city module with `node scripts/export-city-sites.mjs <city-checkout>` from a clean reviewed Core checkout. Review the pin and generated delta here. A dirty Core export is permitted for local development, but the release command rejects it.
 
-## Deployment
+## Work locally
 
-GitHub retains the source; Cloudflare Workers serves the website. Validate the approved batch and push it to `stage`. Open and review a `stage` to `main` pull request, preserving a merge commit. After merging, fast-forward `stage` to the production merge. From the clean merged source, run `npm run validate`, `npm run build`, then `npx wrangler deploy` using the authorised Cloudflare account. Verify the live pages and canonical redirects. Deployment is manual; a Git push alone does not deploy. GitHub Pages is not used.
+Requires Node 20+, npm and Python 3. No production framework or browser JavaScript is required.
+
+```sh
+npm run build
+npm run validate
+npm run serve
+```
+
+Edit `config/site.json` for copy, calendar, theme and release policy. City assets stay under `assets`. The community photograph is from Bengaluru Tech Week 2026 and is visibly attributed. Retained legacy assets and download URLs are compatibility resources, not current branding.
+
+## Media kit
+
+Open `/media-kit/` directly. It is intentionally absent from the homepage navigation and footer, and marked noindex. Downloads include SVG/PNG marks, a white profile image, colour tokens, licensed fonts, descriptions and a readable PDF guide. The ZIP has a per-file SHA-256 inventory and an external checksum; the build tests archive integrity. PDFs are generated from `/media-kit/guide/` in Chromium print mode and reviewed before committing. Re-render the PDF when approved copy or art changes, then rebuild the ZIP. Use the actual downloadable SVG in page previews.
+
+## Release
+
+Validate locally and in a separate browser at desktop/mobile sizes. Push the approved batch to stage, merge stage into main through a merge-commit PR, fast-forward stage, then run npm run deploy on the clean main checkout. Wrangler uses the existing Cloudflare login and exact custom domains. No GitHub Pages deployment is used. Verify live HTTPS, canonical redirects, 404, download checksums and legacy redirects afterward.
+
+No credentials, private operating plans, attendee records or unconfirmed speakers/partners belong in this repository.
