@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "module": "tech-week-core/city-sites",
   "version": "0.3.0",
-  "commit": "f04d5faa632e7685583c7a650e59a60c03299742",
+  "commit": "8256346f5ad43a1c377e65122d0fafa13483a35b",
   "dirty": false,
   "files": {
-    "build.mjs": "473f282399ca491328b315f88eba2146c0110c0829e21d1b1b79f3c1ee6c828c",
+    "build.mjs": "fe61512726514ee880517b36289856c9bfaf7dbc8470c8e29adee705ee5c274f",
     "package-kit.py": "f98a1a0d2272ac3449166a21ede02dfdd98b9a8234561f6101761e5262558d38",
     "render.mjs": "c393c1ae4489ff2e2aa95b3479cde37aedf1de4f2e072fd7b2df0dcc06b451c9",
     "site.css": "97129bdfe6bd55bf216c952440a46bcf456299f5a366ca8f62b1f9e11b467f84",

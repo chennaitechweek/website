@@ -24,7 +24,9 @@ export async function buildSite(root=process.cwd()) {
   if(await exists(path.join(root,'media-kit/brand-guide.pdf'))) await cp(path.join(root,'media-kit/brand-guide.pdf'),path.join(dist,'media-kit/brand-guide.pdf'));
   await writeFile(path.join(dist,'robots.txt'),s.publish?`User-agent: *\nAllow: /\nSitemap: https://${s.domain}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
   await writeFile(path.join(dist,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${s.publish?`<url><loc>https://${s.domain}/</loc></url>`:''}</urlset>`);
-  const policies=`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'none'; connect-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'\n${!s.publish?'  X-Robots-Tag: noindex, nofollow\n':''}\n/media-kit/*\n  X-Robots-Tag: noindex\n\n/downloads/*\n  X-Robots-Tag: noindex\n`;
+  // Do not impose a generic CSP here: the host may inject its own analytics/security scripts.
+  // CSP belongs to a separately audited consumer/hosting policy, not this static renderer.
+  const policies=`/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n${!s.publish?'  X-Robots-Tag: noindex, nofollow\n':''}\n/media-kit/*\n  X-Robots-Tag: noindex\n\n/downloads/*\n  X-Robots-Tag: noindex\n`;
   await writeFile(path.join(dist,'_headers'),policies);
   execFileSync('python3',[path.join(here,'package-kit.py'),root],{stdio:'inherit'});
   console.log(`Built ${s.name} (${s.publish?'release eligible':'LOCAL ONLY'})`);
